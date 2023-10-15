@@ -1,5 +1,7 @@
-import './style/globals.css'
+import '@/style/globals.css'
 import { Inter } from 'next/font/google'
+
+import { NextAuthProvider } from './providers'
 
 import type { Metadata } from 'next'
 
@@ -17,7 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang='ja'>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NextAuthProvider>{children}</NextAuthProvider>
+      </body>
     </html>
   )
 }

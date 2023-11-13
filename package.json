@@ -11,12 +11,24 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@clerk/localizations": "^1.26.9",
+    "@clerk/nextjs": "^4.27.1",
+    "@clerk/themes": "^1.7.9",
+    "@prisma/client": "^5.5.2",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
+    "bcrypt": "^5.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.292.0",
     "next": "latest",
-    "next-auth": "^4.23.2",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -32,6 +44,7 @@
     "lint-staged": "^14.0.1",
     "postcss": "latest",
     "prettier": "^3.0.3",
+    "prisma": "^5.5.2",
     "tailwindcss": "latest",
     "typescript": "latest"
   },

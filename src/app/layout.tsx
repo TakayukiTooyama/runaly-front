@@ -1,7 +1,9 @@
-import '@/style/globals.css'
+import '@/ui/globals.css'
+import { jaJP } from '@clerk/localizations'
+import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
 
-import { NextAuthProvider } from './providers'
+import Header from '@/ui/layout/Header'
 
 import type { Metadata } from 'next'
 
@@ -18,10 +20,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='ja'>
-      <body className={inter.className}>
-        <NextAuthProvider>{children}</NextAuthProvider>
-      </body>
-    </html>
+    <ClerkProvider localization={jaJP}>
+      <html lang='ja'>
+        <body className={inter.className}>
+          <Header />
+          <main className='mx-auto flex min-h-screen max-w-5xl flex-col place-content-center justify-between md:p-12'>
+            {children}
+          </main>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

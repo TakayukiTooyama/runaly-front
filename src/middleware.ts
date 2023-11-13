@@ -1,5 +1,9 @@
-export { default } from 'next-auth/middleware'
+import { authMiddleware } from '@clerk/nextjs'
+
+export default authMiddleware({
+  publicRoutes: ['/'],
+})
 
 export const config = {
-  matcher: ['/((?!register|api|login).*)'],
+  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
 }

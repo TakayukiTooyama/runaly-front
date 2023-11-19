@@ -12,6 +12,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    'tailwindcss/no-custom-classname': 'off',
     'import/order': [
       'error',
       {

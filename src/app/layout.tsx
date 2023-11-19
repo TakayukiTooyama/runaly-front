@@ -1,4 +1,6 @@
 import '@/ui/globals.css'
+import '@vidstack/react/player/styles/base.css'
+
 import { jaJP } from '@clerk/localizations'
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
@@ -24,7 +26,7 @@ export default function RootLayout({
       <html lang='ja'>
         <body className={inter.className}>
           <Header />
-          <main className='mx-auto flex min-h-screen max-w-5xl flex-col place-content-center justify-between md:p-12'>
+          <main className='mx-auto flex min-h-screen max-w-5xl flex-col place-content-center justify-between'>
             {children}
           </main>
         </body>

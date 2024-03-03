@@ -1,5 +1,4 @@
 import '@/ui/globals.css'
-import '@vidstack/react/player/styles/base.css'
 
 import { jaJP } from '@clerk/localizations'
 import { ClerkProvider } from '@clerk/nextjs'

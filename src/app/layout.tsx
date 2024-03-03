@@ -26,7 +26,8 @@ export default function RootLayout({
       <html lang='ja'>
         <body className={inter.className}>
           <Header />
-          <main className='mx-auto flex min-h-screen max-w-5xl flex-col place-content-center justify-between'>
+          <main>
+            {/* <main className='mx-auto flex min-h-screen max-w-5xl flex-col place-content-center justify-between'> */}
             {children}
           </main>
         </body>

@@ -43,7 +43,6 @@ export function TimeSlider({ thumbnails }: TimeSliderProps) {
       ref={previewRootRef}
       onValueChange={([value]) => {
         setValue(value)
-        console.log(value)
         remote.seeking((value / 100) * duration)
       }}
       onValueCommit={([value]) => {

@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@clerk/localizations": "^1.26.16",
-    "@clerk/nextjs": "^4.29.9",
+    "@clerk/nextjs": "beta",
     "@clerk/themes": "^1.7.9",
     "@prisma/client": "^5.5.2",
     "@radix-ui/react-label": "^2.0.2",

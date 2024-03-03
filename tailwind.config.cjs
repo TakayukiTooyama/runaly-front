@@ -1,12 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./src/app/**/*.{ts,tsx}', './src/ui/**/*.{ts,tsx}'],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     container: {
       center: true,
@@ -17,6 +15,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        'media-brand': 'rgb(var(--media-brand) / <alpha-value>)',
+        'media-focus': 'rgb(var(--media-focus) / <alpha-value>)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -72,5 +72,19 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@vidstack/react/tailwind.cjs')({
+      prefix: 'media',
+    }),
+    customVariants,
+  ],
+}
+
+function customVariants({ addVariant, matchVariant }) {
+  // Strict version of `.group` to help with nesting.
+  matchVariant('parent-data', (value) => `.parent[data-${value}] > &`)
+
+  addVariant('hocus', ['&:hover', '&:focus-visible'])
+  addVariant('group-hocus', ['.group:hover &', '.group:focus-visible &'])
 }

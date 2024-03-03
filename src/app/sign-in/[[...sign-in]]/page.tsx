@@ -3,7 +3,7 @@ import { SignIn } from '@clerk/nextjs'
 export default function SignInPage() {
   return (
     <div className='flex flex-col items-center'>
-      <SignIn redirectUrl={'/dashboard'} />
+      <SignIn redirectUrl={'/editor'} />
     </div>
   )
 }

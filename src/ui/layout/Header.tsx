@@ -7,7 +7,7 @@ export default function Header() {
       <nav className='flex justify-between p-2'>
         <div className='flex'>
           <Link
-            href={'/dashboard'}
+            href={'/editor'}
             className='p-2 text-sm font-semibold md:text-2xl'
           >
             Runaly

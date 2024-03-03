@@ -2,7 +2,7 @@
 .eslintrc.js
 prettier.config.js
 next.config.js
-tailwind.config.js
+tailwind.config.cjs
 tsconfig.json
 postcss.config.js
 

@@ -115,7 +115,6 @@ export default function EditorPage() {
       caliMarkers,
       caliWidth,
     )
-    console.log('返却後のデータ', data)
     if (!data) return
     setIsLoading(false)
     setAllData(data)

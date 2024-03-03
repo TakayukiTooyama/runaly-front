@@ -51,7 +51,6 @@ export default function AnalyzePage() {
   const handleClickDot = (payload: unknown): void => {
     const dotPayload = payload as Record<keyof RechartsDotPayload, unknown>
     if (!dotPayload.index) return
-    console.log(dotPayload.index as number)
     setCurrentFrameIndex(dotPayload.index as number)
   }
 

@@ -1,14 +1,21 @@
+// import { auth, currentUser } from '@clerk/nextjs/server'
 import Link from 'next/link'
 
-// import { VideoOnCanvas } from '../analyze/_canvas/VideoOnCanvas'
+export default async function Home() {
+  // const { userId } = auth()
 
-export default function Home() {
+  // if (userId) {
+  //   console.log('ログイン済み')
+  // }
+
+  // const user = await currentUser()
+  // console.log(user)
+
   return (
     <div>
       <h1>Runaly</h1>
       <p>陸上競技動作分析アプリ</p>
-      <Link href='/sign-in'>ログイン</Link>
-      {/* <VideoOnCanvas /> */}
+      <Link href='/editor'>動作解析</Link>
     </div>
   )
 }

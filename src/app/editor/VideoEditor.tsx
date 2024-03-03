@@ -10,7 +10,6 @@ import {
 } from '@vidstack/react'
 import { RefObject } from 'react'
 
-import { VideoLayout } from '@/ui/Player(trash)/video-layout'
 import { Slider } from '@/ui/range-slider'
 
 type Props = {
@@ -65,7 +64,6 @@ function VideoEditor({
           onTimeUpdate={onTimeUpdate}
         >
           <MediaProvider />
-          <VideoLayout />
         </MediaPlayer>
         {/* ) : (
           <div className='aspect-video '></div>

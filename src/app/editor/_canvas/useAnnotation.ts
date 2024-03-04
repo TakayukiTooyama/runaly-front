@@ -17,7 +17,7 @@ export const useAnnotation = () => {
 
   const handleAnnotation = useCallback(
     (
-      e: KonvaEventObject<MouseEvent>,
+      e: KonvaEventObject<MouseEvent | TouchEvent>,
       selectLabel: CaliMarkerKey | null,
       scale: Scale,
     ) => {

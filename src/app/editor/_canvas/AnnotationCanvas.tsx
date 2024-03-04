@@ -40,6 +40,8 @@ function AnnotationCanvas({ stageSize, videoSize, selectedCanvas }: Props) {
     imageRef,
     circleRef,
     handleZoom,
+    handleTouchStart,
+    handleTouchMove,
     handleFitImage,
     handleDragEndGroup,
   } = useCanvasOperation(stageSize, stageSize)
@@ -62,6 +64,8 @@ function AnnotationCanvas({ stageSize, videoSize, selectedCanvas }: Props) {
           isDraggable={isDraggable}
           frameSize={frameSize}
           onZoom={handleZoom}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           onDragEndGroup={handleDragEndGroup}
         >
           <Image
@@ -77,6 +81,14 @@ function AnnotationCanvas({ stageSize, videoSize, selectedCanvas }: Props) {
               )
             }
             onMouseDown={handleMouseDownImage}
+            onTouchStart={handleMouseDownImage}
+            onTouchEnd={(e) =>
+              handleAnnotation(
+                e,
+                caliMarkerKey[currentMarkerIndex],
+                positionScale,
+              )
+            }
             alt=''
           />
           <CaliStick positionScale={positionScale} />

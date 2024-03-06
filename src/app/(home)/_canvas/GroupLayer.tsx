@@ -13,8 +13,6 @@ type Props = {
   groupRef: MutableRefObject<Konva.Group | null>
   frameSize: Dimension
   onZoom: (e: KonvaEventObject<WheelEvent>) => void
-  onTouchStart: (e: KonvaEventObject<TouchEvent>) => void
-  onTouchMove: (e: KonvaEventObject<TouchEvent>) => void
   onDragEndGroup: (e: KonvaEventObject<DragEvent>) => void
 }
 
@@ -24,8 +22,6 @@ export const GroupLayer: FC<Props> = ({
   groupRef,
   frameSize,
   onZoom,
-  onTouchStart,
-  onTouchMove,
   onDragEndGroup,
 }) => (
   <Layer key='background'>
@@ -35,8 +31,6 @@ export const GroupLayer: FC<Props> = ({
       x={-frameSize.width / 2}
       y={-frameSize.height / 2}
       onWheel={onZoom}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
       onDragEnd={onDragEndGroup}
     >
       {children}

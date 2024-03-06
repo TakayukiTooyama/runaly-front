@@ -39,12 +39,12 @@ function AnnotationCanvas({ stageSize, videoSize, selectedCanvas }: Props) {
     groupRef,
     imageRef,
     circleRef,
-    handleZoom,
-    handleTouchStart,
-    handleTouchMove,
+    handleZoomIn,
+    handleZoomOut,
+    handleWheelZoom,
     handleFitImage,
     handleDragEndGroup,
-  } = useCanvasOperation(stageSize, stageSize)
+  } = useCanvasOperation()
 
   const {
     isDraggable,
@@ -63,9 +63,7 @@ function AnnotationCanvas({ stageSize, videoSize, selectedCanvas }: Props) {
           groupRef={groupRef}
           isDraggable={isDraggable}
           frameSize={frameSize}
-          onZoom={handleZoom}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
+          onZoom={handleWheelZoom}
           onDragEndGroup={handleDragEndGroup}
         >
           <Image
@@ -103,13 +101,27 @@ function AnnotationCanvas({ stageSize, videoSize, selectedCanvas }: Props) {
           />
         </GroupLayer>
       </Stage>
-      <div className='absolute bottom-4 right-4'>
+      <div className='absolute bottom-4 right-4 space-x-1'>
         <Button
           size='sm'
           className='w-12 rounded-sm opacity-90'
           onClick={handleFitImage}
         >
           Fit
+        </Button>
+        <Button
+          size='sm'
+          className='w-12 rounded-sm opacity-90'
+          onClick={handleZoomIn}
+        >
+          +
+        </Button>
+        <Button
+          size='sm'
+          className='w-12 rounded-sm opacity-90'
+          onClick={handleZoomOut}
+        >
+          -
         </Button>
       </div>
     </>

@@ -8,11 +8,8 @@ import { useState } from 'react'
 
 import { usePersistStore } from '@/lib/store'
 import { useKeypointStoreBase } from '@/lib/store/useKeypointStore'
-import { RechartsDotPayload } from '@/types'
 import { LineChart } from '@/ui/Chart/LineChart'
 import { Slider } from '@/ui/slider'
-
-// import { PlayerOnCanvas } from './_canvas'
 
 const PoseCanvas = dynamic(() => import('./_pose/PoseCanvas'), {
   ssr: false,
@@ -48,10 +45,12 @@ export default function AnalyzePage() {
   //   })
 
   /* Chart */
-  const handleClickDot = (payload: unknown): void => {
-    const dotPayload = payload as Record<keyof RechartsDotPayload, unknown>
-    if (!dotPayload.index) return
-    setCurrentFrameIndex(dotPayload.index as number)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleClickChart = (payload: any): void => {
+    const dotPayload = payload
+    if (!dotPayload.activeTooltipIndex) return
+    console.log(dotPayload.activeTooltipIndex)
+    setCurrentFrameIndex(dotPayload.activeTooltipIndex as number)
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -60,7 +59,7 @@ export default function AnalyzePage() {
   //   setCurrentFrameIndex(payload.activeTooltipIndex as number)
   // }
   const fps = 60
-  const maxFrameIndex = keypointState ? keypointState.keypoints.length - 1 : 0
+  const maxFrameIndex = keypointState ? keypointState.keypoints.length : 0
   const times = Array.from({ length: maxFrameIndex }, (_, i) =>
     Number(((1 / fps) * i).toFixed(3)),
   )
@@ -81,10 +80,10 @@ export default function AnalyzePage() {
           />
         )}
       </div>
-      <div className='mx-auto mt-3 w-[60%]'>
+      <div className='mx-auto mt-3 w-full max-w-sm'>
         <Slider
           value={[currentFrameIndex]}
-          max={maxFrameIndex}
+          max={maxFrameIndex - 1}
           step={1}
           onValueChange={(value) => setCurrentFrameIndex(value[0])}
         />
@@ -108,52 +107,52 @@ export default function AnalyzePage() {
               <div className='embla__slide'>
                 <div className='h-48 w-full'>
                   <LineChart
+                    currentFrameIndex={currentFrameIndex}
                     xDataKey='time'
                     yDataKey='cogVelocities'
                     xLabel='経過時間(s)'
                     yLabel='重心速度(m/s)'
                     data={keypointState.cogVelocities}
                     times={times}
-                    handleClickDot={handleClickDot}
-                    // handleMoveMouse={handleMoveMouse}
+                    handleClickChart={handleClickChart}
                   />
                 </div>
                 <div className='h-48 w-full'>
                   <LineChart
+                    currentFrameIndex={currentFrameIndex}
                     xDataKey='time'
                     yDataKey='stepLengths'
                     xLabel='経過時間(s)'
                     yLabel='ステップ長(m)'
                     data={keypointState.stepLengths}
                     times={times}
-                    handleClickDot={handleClickDot}
-                    // handleMoveMouse={handleMoveMouse}
+                    handleClickChart={handleClickChart}
                   />
                 </div>
               </div>
               <div className='embla__slide'>
                 <div className='h-48 w-full'>
                   <LineChart
+                    currentFrameIndex={currentFrameIndex}
                     xDataKey='time'
                     yDataKey='leftHipFlexionAngles'
                     xLabel='経過時間(s)'
                     yLabel='股関節屈曲角度(°)'
                     data={keypointState.leftHipFlexionAngles}
                     times={times}
-                    handleClickDot={handleClickDot}
-                    // handleMoveMouse={handleMoveMouse}
+                    handleClickChart={handleClickChart}
                   />
                 </div>
                 <div className='h-48 w-full'>
                   <LineChart
+                    currentFrameIndex={currentFrameIndex}
                     xDataKey='time'
                     yDataKey='trunkAngles'
                     xLabel='経過時間(s)'
                     yLabel='体幹角度(°)'
                     data={keypointState.trunkAngles}
                     times={times}
-                    handleClickDot={handleClickDot}
-                    // handleMoveMouse={handleMoveMouse}
+                    handleClickChart={handleClickChart}
                   />
                 </div>
               </div>

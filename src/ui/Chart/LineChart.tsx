@@ -4,6 +4,7 @@ import {
   Legend,
   Line,
   LineChart as LineRechart,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -11,24 +12,26 @@ import {
 } from 'recharts'
 
 type LineChartProps = {
+  currentFrameIndex: number
   data: (number | null)[]
   times: number[]
   xDataKey: string
   xLabel: string
   yDataKey: string
   yLabel: string
-  handleClickDot: (payload: unknown) => void
+  handleClickChart: (payload: unknown) => void
   handleMoveMouse?: (payload: unknown) => void
 }
 
 export function LineChart({
+  currentFrameIndex,
   data,
   times,
   // xLabel,
   xDataKey,
   // yLabel,
   yDataKey,
-  handleClickDot,
+  handleClickChart,
   handleMoveMouse,
 }: LineChartProps) {
   return (
@@ -41,6 +44,7 @@ export function LineChart({
         }))}
         margin={{ bottom: 0, left: 0, right: 0, top: 0 }}
         syncId='keypoints'
+        onClick={handleClickChart}
       >
         <XAxis
           dataKey={xDataKey}
@@ -61,10 +65,6 @@ export function LineChart({
           dataKey={yDataKey}
           legendType='line'
           dot={false}
-          activeDot={{
-            cursor: 'pointer',
-            onClick: (_e, payload) => handleClickDot(payload),
-          }}
           stroke='orange'
           strokeWidth={2}
           label='角度'
@@ -81,6 +81,7 @@ export function LineChart({
           iconSize={14}
           iconType='plainline'
         />
+        <ReferenceLine x={times[currentFrameIndex]} stroke='red' />
         <Tooltip
           contentStyle={{
             background: 'linear-gradient(to right, #fff9, #fff9)',
@@ -100,7 +101,6 @@ export function LineChart({
           wrapperStyle={{ outline: 'none' }}
           separator=' '
           labelFormatter={(label) => `Time ${label}s`}
-          formatter={(value) => `${value}`} //TODO:後ほど変更
         />
       </LineRechart>
     </ResponsiveContainer>

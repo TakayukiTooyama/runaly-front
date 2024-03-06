@@ -1,6 +1,6 @@
 import { Stage, Layer, Circle, Line } from 'react-konva'
 
-import { useFrameSize } from '@/app/editor/_canvas/useFrameSize'
+import { useFrameSize } from '@/app/(home)/_canvas/useFrameSize'
 import { defaultMarkerOption } from '@/constants'
 import { strictEntries } from '@/lib/utils'
 import { BodyPartsKey, Dimension, Keypoint, MarkerOption } from '@/types'
